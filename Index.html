@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document_cosya_title</title>
+</head>
+<body>
+  <script>
+//HVW 3 1 
+
+let number = prompt('Enter your Number');
+
+  if (number%2 == 0) {
+    alert(`Number ${number} is EVEN`);
+  }  else{
+    alert(`Number ${number} is ODD`);
+  }
+
+//HVW 3 2(case 1)
+let Age = prompt('Enter your age');
+
+if (Age >= 14 && Age <= 90)
+ {
+  alert(`Number ${Age} is Between 14 and 90`);
+ }   
+ else
+ {
+  alert(`Number ${Age} is NOT Between 14 and 90`);
+ }
+
+//HVW 3 2(case 2)
+let Age = prompt('Enter your age');
+let isBetween = (Age >= 14 && Age <= 90) ? true : false;
+
+if (!isBetween) 
+ {
+  alert(`Number ${Age} is NOT Between 14 and 90`)
+  
+ }   
+ else
+ {
+  alert(`Number ${Age} is Between 14 and 90`);;
+ }
+
+//HVW 3 3
+
+for (let i = 0; i <= 10; i+=2) { 
+  console.log(i); 
+}
+
+//HVW 3 4
+
+for (let i = 1; i < 10; i+=2) { 
+  console.log(i); 
+}
+
+//HVW 3 5
+
+const cLogin = 'Admin';
+const cPass = 'TheMaster';
+let login;
+let pass;
+
+login = prompt("Who's here?");
+if (login == cLogin) 
+  {
+    pass = prompt("Enter your password:");
+    if (pass == cPass ) 
+      {
+      alert("Welcome");
+      } 
+    else if  (pass == '' || pass == null ) 
+      {
+      alert("Canceled");
+      } 
+    else 
+      {
+        alert("Wrong password");
+      }
+  } 
+else if (login == '' || login == null ) 
+  {
+    alert("Canceled");
+  }
+else 
+  {
+    alert( "I don’t know you");
+  }
+
+</script>
+   
+</body>
+</html>
