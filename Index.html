@@ -7,6 +7,44 @@
 </head>
 <body>
   <script>
+// 1 lesson 
+/* 
+alert('Hello_alert!') 
+src="Scripts/Main.js"> 
+
+
+// 2 lesson HW1 
+let firstNumber = +prompt('Input 1:'), 
+secondNumber = +prompt('Input 2:'); 
+alert(firstNumber+secondNumber) -->
+
+// 2 lesson HW2
+
+  const name = prompt("What's your name?")
+  alert('Hello, '+ name)-->
+
+// 2 lesson HW3
+let firstNumber = parseInt(prompt('Input 1:')); //only Int 
+alert(firstNumber%2)
+
+
+//2 lesson HW4
+
+let floatNumber = parseFloat(prompt('Input 1:')); 
+let firstPart = parseInt(floatNumber);
+let secondPart =  floatNumber - firstPart;
+alert(`Before: ${firstPart} , After: ${secondPart}`)    //.toFixed(3)
+
+// 3 Lesson 1 Practice
+
+let Age = prompt('Enter your age');
+
+if (Age >= 14 && Age <= 90) {
+  console.log("You are fit!");
+}  else{
+  console.log("You are not fit!");
+}
+
 //HVW 3 1 
 
 let number = prompt('Enter your Number');
@@ -87,6 +125,52 @@ else
   {
     alert( "I don’t know you");
   }
+
+//HW_4 1 (case1)
+
+function getPower(number,power) {
+  let result = number**power
+  return result ;
+}
+console.log(getPower(5,5));  //call
+
+
+//HW_4 1 (case2)
+function getPower(number,power) {
+  let result = 1;
+ 
+  for (let index = 0; index < power; index++) {
+    
+    result = result*number;
+   }
+  return   result ;
+ ;
+}
+console.log(getPower(5,4));  //call
+
+//HW_4 2 (case2) 
+
+let  calcMin = (a, b) =>  Math.min(a, b);
+console.log(calcMin(12, -12) );  //call 
+
+
+//HW_4 3
+
+let  calcMax = (a, b) =>  Math.max(a, b);
+console.log(calcMax(12, -12) ); //call
+
+//HW_4 4
+ 
+let = sayAgree=() => alert("You agreed.");
+let = sayCancel=() => alert("You canceled the execution."); 
+let = ask=(question, yes, no)=> confirm(question) ? yes() :  no();
+
+ask("Do you agree?",sayAgree,sayCancel); //call
+
+
+*/
+
+
 
 </script>
    
