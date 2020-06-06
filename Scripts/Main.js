@@ -208,7 +208,7 @@ function getAverageAge(string)
 }
 getAverageAge('15, 60, 45, 30') ;
 
-//HW_5 4
+//HW_5 4 (loop)
 
 function filterRange(arr, firstNumber, secondNumber)
   {
@@ -225,9 +225,25 @@ function filterRange(arr, firstNumber, secondNumber)
           }
           
       };
-    return newArray.join(',');
+    return newArray;
+    }
+  //call  
+  let arr = [5, 3, 8, 1];
+  let filtered = filterRange(arr, 1, 4);
+  console.log(filtered); 
    
-    // return newArray.join(','); or
+//HW_5 4 (filter function)
+
+function filterRange(arr, firstNumber, secondNumber) {
+  return arr.filter(item => (firstNumber <= item && item <= secondNumber));
+  }
+//call
+  let arr = [5, 3, 8, 1];
+  let filtered = filterRange(arr, 1, 4);
+  console.log(filtered); 
+
+
+
   };
 let arr = [5, 3, 8, 1];
 let filtered = filterRange([5, 3, 8, 1], 1, 4);
@@ -248,11 +264,10 @@ alert( extractCurrencyValue('$120')===120 ); // true
 
 function ucFirst(str)
   { 
-    subStr= str[0];
-    let result = subStr.toUpperCase() + str.slice(1) ;
+    let result = str[0].toUpperCase() + str.slice(1) ;
     return result;
   }
-  console.log(ucFirst('lowercase'));
+  console.log(ucFirst('Lowercase'));
 
 
 //HW_6 1
@@ -266,3 +281,4 @@ user.name = 'peter'
 console.table(user)
 ; 
 */
+
