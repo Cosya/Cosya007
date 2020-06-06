@@ -195,9 +195,74 @@ styles.push ('Rock-n-Roll');
 styles[1] = 'Classic'
 styles.splice (0, 0, "Rap", "Reggae");
 console.log (styles);
+
+//HW_5 3
+
+function getAverageAge(string)
+{ 
+  let array = string.split(',') ;
+  result = array.reduce((sum,current) => sum+ +current, 0) ;
+  result = result/array.length
+  console.log (result);
+ 
+}
+getAverageAge('15, 60, 45, 30') ;
+
+//HW_5 4
+
+function filterRange(arr, firstNumber, secondNumber)
+  {
+    newArray = [];
+    for (let i = 0; i < arr.length; i++) 
+      {
+        if (arr[i]>=firstNumber && arr[i]<=secondNumber)
+          {
+            newArray.push(arr[i]);
+          } 
+        else 
+          {
+            continue;
+          }
+          
+      };
+    return newArray.join(',');
+   
+    // return newArray.join(','); or
+  };
+let arr = [5, 3, 8, 1];
+let filtered = filterRange([5, 3, 8, 1], 1, 4);
+alert( filtered ); // 3,1 (matching values)
+
+//HW_5 5
+
+function extractCurrencyValue (currencyString)
+  {
+    let result = currencyString.substring(1, currencyString.length)
+    //or str.slice(1) 
+    return +result;
+  }
+
+alert( extractCurrencyValue('$120')===120 ); // true
+
+//HW_5 6
+
+function ucFirst(str)
+  { 
+    subStr= str[0];
+    let result = subStr.toUpperCase() + str.slice(1) ;
+    return result;
+  }
+  console.log(ucFirst('lowercase'));
+
+
+//HW_6 1
+let user={} ;
+console.log(user);
+user.name ='John';
+console.log(user);
+user.surname = 'smith';
+console.table(user)
+user.name = 'peter'
+console.table(user)
+; 
 */
-
-//HW_5 2
-
-
-
