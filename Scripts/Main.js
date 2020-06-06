@@ -198,15 +198,14 @@ console.log (styles);
 
 //HW_5 3
 
-function getAverageAge(string)
+  function getAverageAge(string)
 { 
   let array = string.split(',') ;
-  result = array.reduce((sum,current) => sum+ +current, 0) ;
-  result = result/array.length
-  console.log (result);
+  result = array.reduce((sum,current) => sum+ +current, 0) /array.length;
+  return  result;
  
 }
-getAverageAge('15, 60, 45, 30') ;
+console.log (getAverageAge('15, 60, 45, 30') );
 
 //HW_5 4 (loop)
 
@@ -243,12 +242,6 @@ function filterRange(arr, firstNumber, secondNumber) {
   console.log(filtered); 
 
 
-
-  };
-let arr = [5, 3, 8, 1];
-let filtered = filterRange([5, 3, 8, 1], 1, 4);
-alert( filtered ); // 3,1 (matching values)
-
 //HW_5 5
 
 function extractCurrencyValue (currencyString)
@@ -280,5 +273,23 @@ console.table(user)
 user.name = 'peter'
 console.table(user)
 ; 
-*/
 
+//HW_6 2
+
+const users = [
+  {name: 'Ivan', age: 35, gender: 'male'},
+  {name: 'Ann', age: 33, gender: 'female'},
+  {name: 'Jane', age: 40, gender: 'female'},
+  {name: 'Alex', age: 20, gender: 'male'},
+  {name: 'Sam', age: 52, gender: 'female'}
+];
+
+function getObjectAverageAge(users)
+  {
+    let ages = users.map(user => user.age);
+     result = ages.reduce((sum,current) => sum+ +current, 0) /ages.length;
+    return result;
+  }
+
+console.log(getObjectAverageAge(users))
+*/
