@@ -63,3 +63,22 @@ function multiplyNumeric(obj)
 }
 multiplyNumeric(user);
 console.table(user);
+
+//HW_6 5
+
+let calculator = {
+ 
+  read() {
+    calculator.number1 = +prompt('Enter number 1');
+    calculator.number2 = +prompt('Enter number 2');
+  },
+  sum(){
+    let result = this.number1+this.number2; 
+    return result},
+  mul(){
+    let result = this.number1*this.number2; 
+    return result}
+  }
+calculator.read();
+alert( calculator.sum() );
+alert( calculator.mul() );  
