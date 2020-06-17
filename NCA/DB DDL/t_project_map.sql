@@ -13,7 +13,9 @@ CREATE TABLE [dbo].[t_project_map]
 	ID UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
 	[EffectiveMonthDate] [date] NOT NULL,
 	[Full_Name] [nvarchar](255) NOT NULL,
-	[Project] [nvarchar](255) NULL
+	[Project] [nvarchar](255) NULL,
+	[Created_by] NVARCHAR(256) DEFAULT  cast(CURRENT_USER as Nvarchar)  NOT NULL,
+	[Created_on] datetime  DEFAULT current_timestamp NOT NULL,
  )
  ON [PRIMARY]
 

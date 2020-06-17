@@ -5,8 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-Create procedure [dbo].[usp_log]
+Create or alter procedure [dbo].[usp_log]
   
 	@Source NVARCHAR(128), 
 	@Params NVARCHAR(512),
