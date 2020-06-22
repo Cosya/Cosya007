@@ -7,18 +7,33 @@
     <title>Homework</title>
 </head>
 <body>
-    <button id="openPopupButton" type="button">Open Popup</button>
-    <section class="popup">
-        <span id="closePopupButton" type="button">X</span>
-        Hello from Popup!
-    </section>
+    <div id="ball"></div>
+    <button type="button" id="moveBallXY">Move the ball diagonally</button>
+    <br>
+    <p>
+        Move the ball horizontally with input: <br>
+        <input id="moveBallX" type="number" min="0" max="1000" step="15" value="0">
+       
+    </p>
 
     <hr>
-    
-    <button id="addCircleButton" type="button">Add circle</button>
-    <button id="removeCircleButton" type="button">Remove circle</button>
-    <section class="circle-container">
-    </section>
+      
+    <form id="userForm">
+        <label>
+            <span>Name:</span>
+            <input type="text" value="Ann" name="username">
+        </label>
+        <label>
+            <span>Age:</span>
+            <input type="number" name="age" value="25">
+        </label>
+        <label>
+            <span>Job Title:</span>
+            <input type="text" value="JS Dev" name="jobTitle">
+        </label>
+        <input type="submit" value="Send">
+    </form> 
+         
     <script src="HW_10.js"></script>
 </body>
 </html>
