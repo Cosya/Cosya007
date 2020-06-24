@@ -236,7 +236,8 @@ order by 1</CommandText>
       <Query>
         <DataSourceName>EPAS</DataSourceName>
         <CommandText>SELECT DISTINCT [Direct_Manager]
-  FROM [EPAS].[dbo].[t_manager_map]</CommandText>
+  FROM [EPAS].[dbo].[t_manager_map]
+order by 1</CommandText>
       </Query>
       <Fields>
         <Field Name="Direct_Manager">

@@ -11,7 +11,7 @@ Create or alter procedure [dbo].[usp_log]
 	@Params NVARCHAR(512),
 	@Sp_name NVARCHAR(256),
 	@Target_table NVARCHAR(256),
-	@Record_count int,
+	@Record_count NVARCHAR(128),
 	@Comment NVARCHAR(4000)
 AS
 BEGIN
