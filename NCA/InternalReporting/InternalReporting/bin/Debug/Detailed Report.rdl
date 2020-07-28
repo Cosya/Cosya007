@@ -42,7 +42,7 @@
             <Value>=Parameters!Direct_Manager.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>select
+        <CommandText>select distinct
 re.Full_Name,
 sg.Short_Grade,
 sg.Grade,
@@ -51,6 +51,7 @@ sg.Grade_Type,
 re.Group_Leader,
 re.Location_Short as [Location],
 re.Project,
+re.Direct_manager,
 TotalMoney as TotalMoney,
 Base,
 Addon,
@@ -59,6 +60,14 @@ su.SubGrade
   FROM [EPAS].[dbo].[t_s_report_excel] re
   left join [EPAS].[dbo].[t_short_grades] sg on re.Grade = sg.Long_Grade
    left join [EPAS].[dbo].[t_subgrade_excel] su on su.Full_Name = re.Full_Name and su.EffectiveMonthDate = re.EffectiveMonthDate
+  left Join [EPAS].[dbo].[t_manager_map] manager_map
+	on re.EffectiveMonthDate = manager_map.EffectiveMonthDate
+	and re.Full_Name =  manager_map.Full_Name
+	and manager_map.Direct_Manager in (@Direct_Manager )
+left Join [EPAS].[dbo].[t_Project_map] project_map
+	on re.EffectiveMonthDate = project_map.EffectiveMonthDate
+	and re.Full_Name =  project_map.Full_Name
+	and project_map.Project in (@Project)
 where 
 	 re.EffectiveMonthDate = @Month
 and re.Location_Short in (@Location)
@@ -68,8 +77,8 @@ and re.Group_Leader in (@GL)
 and sg.Grade_Type in (@AssignmentType)
 and sg.Short_Grade in (@Assignment)
 and sg.Specialization in (@Specialization)
-and re.Project in (@Project)
-and re.Direct_Manager in (@Direct_Manager)</CommandText>
+and project_map.ID is not null
+and manager_map.ID is not null</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -103,6 +112,10 @@ and re.Direct_Manager in (@Direct_Manager)</CommandText>
         </Field>
         <Field Name="Project">
           <DataField>Project</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Direct_manager">
+          <DataField>Direct_manager</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TotalMoney">
@@ -317,6 +330,9 @@ order by 1</CommandText>
                   <Width>1.95833in</Width>
                 </TablixColumn>
                 <TablixColumn>
+                  <Width>1.425in</Width>
+                </TablixColumn>
+                <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
@@ -493,6 +509,45 @@ order by 1</CommandText>
                               <Style>Solid</Style>
                             </BottomBorder>
                             <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Direct Manager</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -898,6 +953,41 @@ order by 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Direct_manager">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Direct_manager.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Direct_manager</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Location">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1142,6 +1232,7 @@ order by 1</CommandText>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1173,7 +1264,7 @@ order by 1</CommandText>
             </SortExpressions>
             <Top>0.43in</Top>
             <Height>0.43in</Height>
-            <Width>11.21875in</Width>
+            <Width>12.64375in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
@@ -1181,7 +1272,7 @@ order by 1</CommandText>
         <Height>0.86in</Height>
         <Style />
       </Body>
-      <Width>12.1875in</Width>
+      <Width>12.64375in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
