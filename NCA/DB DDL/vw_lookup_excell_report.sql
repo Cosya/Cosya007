@@ -1,4 +1,6 @@
-alter view [dbo].[vw_lookup_excell_report]
+USE [EPAS]
+GO
+Create view [dbo].[vw_lookup_excell_report]
 	(
 		[EffectiveMonthDate]
 	  ,[Full_Name_UA]

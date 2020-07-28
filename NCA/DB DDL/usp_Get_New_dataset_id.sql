@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 USE [EPAS]
 GO
 
@@ -13,6 +14,15 @@ AS
  BEGIN
  DECLARE @RC int;
  DECLARE @NewdatasetID uniqueidentifier;
+=======
+
+use [EPAS];
+go
+Create PROCEDURE [dbo].[usp_Get_New_dataset_id] (@FileName varchar(256), @NewdatasetID uniqueidentifier output )
+AS
+ BEGIN
+ DECLARE @RC int;
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace
  SET NOCOUNT ON;
  --loging start
  
@@ -43,6 +53,7 @@ AS
 		'1',																		--@Record_count nvarchar (128),t,
 		'End'																	--@Comment NVARCHAR(4000)
 
+<<<<<<< HEAD
  select @NewdatasetID AS NewdatasetID;
 
 end;
@@ -50,3 +61,10 @@ end;
 GO
 
 
+=======
+ select @NewdatasetID;
+ RETURN
+
+end;
+
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace

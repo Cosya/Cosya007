@@ -1,14 +1,26 @@
+<<<<<<< HEAD
 USE [EPAS_DEV]
 GO
 
 /****** Object:  Table [dbo].[t_Excell_load_errors]    Script Date: 07.07.2020 12:25:43 ******/
+=======
+USE [EPAS]
+GO
+
+/****** Object:  Table [dbo].[STG_t_s_report_excel]    Script Date: 23.06.2020 9:40:22 ******/
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+<<<<<<< HEAD
 CREATE TABLE [dbo].[t_Excell_load_errors](
+=======
+CREATE TABLE [dbo].[t_Excell_load_errors]
+	(
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace
 	[Full_Name_UA] [nvarchar](255) NULL,
 	[Full_Name] [nvarchar](255) NULL,
 	[Relationship_IP] [nvarchar](255) NULL,
@@ -35,3 +47,8 @@ CREATE TABLE [dbo].[t_Excell_load_errors](
 GO
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace

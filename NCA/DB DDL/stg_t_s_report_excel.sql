@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 USE [EPAS_DEV]
 GO
 
 /****** Object:  Table [dbo].[stg_t_s_report_excel]    Script Date: 07.07.2020 12:24:57 ******/
+=======
+USE [EPAS]
+GO
+
+/****** Object:  Table [dbo].[stg_t_s_report_excel]    Script Date: 24.06.2020 15:07:59 ******/
+>>>>>>> f018c7e1dd3cdd2a50b44d1aa7468d0ec4c21ace
 SET ANSI_NULLS ON
 GO
 
