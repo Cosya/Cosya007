@@ -1,7 +1,7 @@
-USE [EPAS]
+USE [EPAS_DEV]
 GO
 
-/****** Object:  Table [dbo].[t_short_grades]    Script Date: 6/2/2020 11:20:29 AM ******/
+/****** Object:  Table [dbo].[t_short_grades]    Script Date: 05.08.2020 12:05:08 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[t_short_grades](
 	[Grade] [nvarchar](50) NOT NULL,
 	[Specialization] [nvarchar](50) NOT NULL,
 	[Grade_Type] [nvarchar](50) NOT NULL,
+	[Role] [nvarchar](255) NULL,
  CONSTRAINT [PK_t_short_grades] PRIMARY KEY CLUSTERED 
 (
 	[Long_Grade] ASC
