@@ -1,14 +1,11 @@
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_log]    Script Date: 07.07.2020 12:23:26 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE   procedure [dbo].[usp_log]
+Create or alter procedure [dbo].[usp_log]
   
 	@Source NVARCHAR(128), 
 	@Params NVARCHAR(512),
@@ -39,6 +36,3 @@ BEGIN
 
 
 END;
-GO
-
-

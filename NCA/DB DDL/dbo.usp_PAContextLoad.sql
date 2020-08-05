@@ -1,11 +1,11 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 /****** Object:  StoredProcedure [Import].[PersonLoad]    Script Date: 16.07.2020 18:37:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER OFF
 GO
-CREATE PROCEDURE dbo.usp_PAContextLoad
+ALTER PROCEDURE dbo.usp_PAContextLoad
 AS
 BEGIN
 
@@ -59,5 +59,5 @@ BEGIN
 	WHEN NOT MATCHED BY SOURCE THEN
 	DELETE;
 	--GO
-	PRINT 'Import was successful from PA.[EvaluationPeer]'
+	PRINT 'Import was successful from PA.[Context]'
 END
