@@ -1,109 +1,136 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="6/15/2020 9:23:53 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="AHAISRUK-N"
   DTS:CreatorName="INFOPULSE\Anton.Haistruk"
-  DTS:DTSID="{A7380519-DAAC-48F0-9F0B-F0FBC681183A}"
+  DTS:DTSID="{5AB40313-C4AD-43AC-A038-07142D95AB17}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="1058"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="74"
-  DTS:VersionGUID="{81916E7F-AB3C-4B7F-BDFE-6D774ED4E3AD}">
+  DTS:VersionBuild="135"
+  DTS:VersionGUID="{65DD0AE6-6B22-4724-B024-539F6F3215A8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[AHAISRUK-N.EPAS]"
+      DTS:refId="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{5D198971-E233-4000-BD91-740975C1DB08}"
-      DTS:ObjectName="AHAISRUK-N.EPAS">
+      DTS:DTSID="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+      DTS:ObjectName="172.27.145.41.EPAS_DEV.mvp_powerbi">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=AHAISRUK-N;Initial Catalog=EPAS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=172.27.145.41;User ID=mvp_powerbi;Initial Catalog=EPAS_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwbUFyAuHgke7g2qtAR+BXQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAUEUPyQXgwzwFERctXMBy1AAAAAASAAACgAAAAEAAAAC/5QamLKRYZW2uXm5tFtksYAAAA4M0qpVwkpxUTanDWjVBKVdd47PYctVoqFAAAAFaEXQq1irldOhoqXXKwoMVuQnJN</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{BC1AC521-D93B-4D95-B5B3-CD0E161A9752}"
+      DTS:DTSID="{EBD6CD8B-AEAC-44CF-A739-FC422A67E422}"
       DTS:ObjectName="Excel Connection Manager">
       <DTS:PropertyExpression
         DTS:Name="ExcelFilePath">@[User::File_Path]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\EPAS\01.2019.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\mvp_powerbi\Downloads\NCA\Import\05.2019.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{BFD893E0-3A29-4853-B554-F49CA69D5F14}"
+      DTS:ObjectName="Input_File_Path"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">D:\EPAS\02.2019.xlsx</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{AEC428DE-F241-45FC-89E0-FAEAED46BD9A}"
+      DTS:DTSID="{9A890C52-D60A-4AD6-B6B6-B924182F27CB}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="SUBSTRING( @[User::File_Name] , 4, 4 ) + &quot;-&quot;  + LEFT( @[User::File_Name] , 2 ) + &quot;-01&quot;"
+      DTS:Expression="SUBSTRING( @[User::File_Name] , 4, 4) + &quot;-&quot;  + LEFT( @[User::File_Name] , 2 ) + &quot;-01&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DATE">
       <DTS:VariableValue
-        DTS:DataType="8">2019-01-01</DTS:VariableValue>
+        DTS:DataType="8">2019-05-01</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D0DF2170-5AEB-4B13-B99E-2027CB22C5FE}"
+      DTS:DTSID="{E15FCC05-C468-4645-8995-D9B0D9A80D73}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::File_Folder]  + &quot;Error&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ErrorOutPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\EPAS\Error</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\mvp_powerbi\Downloads\NCA\Import\Error</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{6987C20E-3ED5-4230-9B13-5ECEAC29D288}"
+      DTS:DTSID="{D787EE74-869E-4037-B162-D8BF1E74ADC0}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="REPLACE( @[User::File_Path] , @[User::File_Name] ,&quot;&quot;)"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="File_Folder">
       <DTS:VariableValue
-        DTS:DataType="8">D:\EPAS\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\mvp_powerbi\Downloads\NCA\Import\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C3F1167B-B552-4C4D-A81A-F7BCEFF004A7}"
+      DTS:DTSID="{8900BEEF-6D6F-4940-800E-546C00A3D7C4}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="RIGHT( @[User::File_Path] ,12)"
+      DTS:Expression="RIGHT( @[User::File_Path] ,11)"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="File_Name">
       <DTS:VariableValue
-        DTS:DataType="8">01.2019.xlsx</DTS:VariableValue>
+        DTS:DataType="8">05.2019.xls</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8E011B76-9B0B-4B9F-8E93-AC37E8D1F8CB}"
+      DTS:DTSID="{D3845781-5327-49DB-BAE5-FBE39A7C82B6}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="File_Path">
       <DTS:VariableValue
-        DTS:DataType="8">D:\EPAS\01.2019.xlsx</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\mvp_powerbi\Downloads\NCA\Import\05.2019.xls</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8EC25EB4-26C5-43CB-8090-BA7811F171EC}"
+      DTS:DTSID="{7E3B91D7-AD86-4616-BD9B-49EF8054B6E3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewdatasetID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{494B1D76-AF15-420A-9BB7-14C05FBA7D21}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[User::File_Folder]  + &quot;Success&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SuccessOutPath">
       <DTS:VariableValue
-        DTS:DataType="8">D:\EPAS\Success</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\mvp_powerbi\Downloads\NCA\Import\Success</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -111,7 +138,7 @@
       DTS:refId="Package\Check if folders exist"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:DTSID="{B2AE3A01-5D63-4E51-9DE5-5C2A4EAD5F9E}"
+      DTS:DTSID="{19DCD8BC-4905-40EE-908D-7F1FEA601354}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Check if folders exist"
@@ -124,15 +151,6 @@
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="User::ErrorOutPath,User::SuccessOutPath">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -253,6 +271,35 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_033a166cfcbc4fa0a24b450195eab89e.Properties.Settings.get_Default():ST_033a166cfcbc4fa0a24b450195eab89e.Properties.Sett" +
+    "ings")]
+
+namespace ST_033a166cfcbc4fa0a24b450195eab89e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
 /* The Script Task allows you to perform virtually any operation that can be accomplished in
@@ -349,8 +396,9 @@ namespace ST_033a166cfcbc4fa0a24b450195eab89e
 		{
             // TODO: Add your code here
             string SucccsesFolderPt, ErrorFolderPt;
-            SucccsesFolderPt = Dts.Variables["SuccessOutPath"].Value.ToString();
-            ErrorFolderPt = Dts.Variables["ErrorOutPath"].Value.ToString();
+            SucccsesFolderPt = Dts.Variables["User::SuccessOutPath"].Value.ToString();
+            ErrorFolderPt = Dts.Variables["User::ErrorOutPath"].Value.ToString();
+           // Dts.Variables["User::File_Path"].Value = Dts.Variables["$Package::Input_File_Path"].Value;
             DirectoryInfo SuccesInfo = new DirectoryInfo(SucccsesFolderPt);
             DirectoryInfo ErrorInfo = new DirectoryInfo(ErrorFolderPt);
             if (!SuccesInfo.Exists)
@@ -399,6 +447,7 @@ namespace ST_033a166cfcbc4fa0a24b450195eab89e
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -469,12 +518,12 @@ namespace ST_033a166cfcbc4fa0a24b450195eab89e
           <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
   <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
     <msb:CodeName>ST_033a166cfcbc4fa0a24b450195eab89e</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_033a166cfcbc4fa0a24b450195eab89e</msb:DisplayName>
-    <msb:ProjectId>{7AE0EDBD-0B56-485D-B619-0A16980A6967}</msb:ProjectId>
+    <msb:ProjectId>{492EFF95-9D78-49B7-9EAE-6301D8ED8CF5}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_033a166cfcbc4fa0a24b450195eab89e.csproj" />
@@ -486,35 +535,6 @@ namespace ST_033a166cfcbc4fa0a24b450195eab89e
     <msb:File Include="ScriptMain.cs" />
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_033a166cfcbc4fa0a24b450195eab89e.Properties.Settings.get_Default():ST_033a166cfcbc4fa0a24b450195eab89e.Properties.Sett" +
-    "ings")]
-
-namespace ST_033a166cfcbc4fa0a24b450195eab89e.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
           <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
@@ -545,6 +565,15 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -616,21 +645,21 @@ namespace ST_033a166cfcbc4fa0a24b450195eab89e.Properties {
           <BinaryItem
             Name="ST_033a166cfcbc4fa0a24b450195eab89e.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDALet614AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAARi4A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAH3D9V4AAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAXi4A
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPQtAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAwuAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAATA4AAAAgAAAAEAAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAZA4AAAAgAAAAEAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAASAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAo
-LgAAAAAAAEgAAAACAAUAOCEAAAQMAAABAAAAAAAAADwtAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABA
+LgAAAAAAAEgAAAACAAUAOCEAABwMAAABAAAAAAAAAFQtAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAgB1AAAAAQAAEQIoEAAACm8RAAAKcgEAAHBvEgAACm8T
-AAAKbxQAAAoKAigQAAAKbxEAAApyHwAAcG8SAAAKbxMAAApvFAAACgZzFQAACgtzFQAACgwHbxYA
+AAAKbxQAAAoKAigQAAAKbxEAAApyKwAAcG8SAAAKbxMAAApvFAAACgZzFQAACgtzFQAACgwHbxYA
 AAotBgdvFwAACghvFgAACi0GCG8XAAAKAigQAAAKFm8YAAAKKh4CKBkAAAoqHgIoGgAACiqufgEA
-AAQtHnI5AABw0AMAAAIoGwAACm8cAAAKcx0AAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+
+AAQtHnJRAABw0AMAAAIoGwAACm8cAAAKcx0AAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+
 AwAABCoeAigeAAAKKi5zCAAABoADAAAEKgBCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
-AGwAAADcAwAAI34AAEgEAACUBQAAI1N0cmluZ3MAAAAA3AkAAKwAAAAjVVMAiAoAABAAAAAjR1VJ
-RAAAAJgKAABsAQAAI0Jsb2IAAAAAAAAAAgAAAVcdogEJAwAAAPoBMwAWAAABAAAAHwAAAAUAAAAG
+AGwAAADcAwAAI34AAEgEAACUBQAAI1N0cmluZ3MAAAAA3AkAAMQAAAAjVVMAoAoAABAAAAAjR1VJ
+RAAAALAKAABsAQAAI0Jsb2IAAAAAAAAAAgAAAVcdogEJAwAAAPoBMwAWAAABAAAAHwAAAAUAAAAG
 AAAACQAAAAEAAAAeAAAAAgAAABAAAAABAAAAAgAAAAMAAAAEAAAAAQAAAAQAAAABAAAAAQAAAAAA
 hgMBAAAAAAAGADYCcwQGAMUCcwQGAIIBYAQPAOcEAAAGAK8BBAQGABkCBAQGAPoBBAQGAKwCBAQG
 AFYCBAQGAG8CBAQGAMYBBAQGAOEB8wIKAIoCNQMKAPoANQMGADEECgAGAL4DtwMGAGUBYAQGAGUF
@@ -645,7 +674,7 @@ BBUAwQBTBAYAcQBEBSMAyQAlBSgA0QCuAy0A2QDjAjMAkQANAzcAeQBTBBAA4QBaBTsAeQAuAQYA
 yQB4BQEAcQBTBAYAkQBTBAYA6QCTAD8A6QCHBUYAmQBTBEsAuQBTBAYACAAUAGQACAAYAGkAKQBz
 ANEALgALAKkALgATALIALgAbANEALgAjANoALgArAAMBLgAzAAMBLgA7AAMBLgBDANoALgBLAAkB
 LgBTAAMBLgBbACABQwBjAGkASQBzANEAYQB7AGkAYwBrAGkAGwADAAEABAADAAAAQwSaAAAA8gCf
-AAAAcAWkAAIABAADAAIABQAFAAEABgAFAAIABwAHAASAAAABAAAAMh2zlAAAAAAAAEQAAAAEAAAA
+AAAAcAWkAAIABAADAAIABQAFAAEABgAFAAIABwAHAASAAAABAAAAOh2WWQAAAAAAAEQAAAAEAAAA
 AAAAAAAAAABSADsAAAAAAA8AAAAAAAAAAAAAAFsAFgMAAAAABAAAAAAAAAAAAAAAUgC3AwAAAAAP
 AAAAAAAAAAAAAABbABQAAAAAAAAAAAABAAAApAQAAAUAAgAAAAAAADxNb2R1bGU+AFN5c3RlbS5J
 TwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAdmFsdWVfXwBtc2NvcmxpYgBTVF8wMzNh
@@ -672,22 +701,22 @@ aWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfMDMzYTE2NmNmY2JjNGZhMGEyNGI0NTAx
 OTVlYWI4OWUuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNU
 XzAzM2ExNjZjZmNiYzRmYTBhMjRiNDUwMTk1ZWFiODllLlByb3BlcnRpZXMAZ2V0X1ZhcmlhYmxl
 cwBTZXR0aW5ncwBTdWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfRXhpc3RzAE9iamVj
-dABnZXRfRGVmYXVsdABzZXRfVGFza1Jlc3VsdABnZXRfQXNzZW1ibHkAAB1TAHUAYwBjAGUAcwBz
-AE8AdQB0AFAAYQB0AGgAABlFAHIAcgBvAHIATwB1AHQAUABhAHQAaAAAcVMAVABfADAAMwAzAGEA
-MQA2ADYAYwBmAGMAYgBjADQAZgBhADAAYQAyADQAYgA0ADUAMAAxADkANQBlAGEAYgA4ADkAZQAu
-AFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAFNpaDP2bY9Ik+QtbO9o
-5iMABCABAQgDIAABBSABARERBCABAQ4FIAEBEVUHBwMOEj0SPQQgABJlBCAAEmkFIAESbRwDIAAc
-AyAADgMgAAIGAAESdRF5BCAAEn0GIAIBDhJ9CLd6XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMG
-Ek0DBhJRAwYSEAIGCAMGERQEAAASTQQAABJRBQABARJRBAAAEhADAAABBAgAEk0ECAASUQQIABIQ
-CAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF8w
-MzNhMTY2Y2ZjYmM0ZmEwYTI0YjQ1MDE5NWVhYjg5ZQAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAy
-MDIwAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlO
-YW1lEi5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2Vz
-LlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50
-aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAABwuAAAAAAAAAAAAADYuAAAAIAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAoLgAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxs
-AAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+dABnZXRfRGVmYXVsdABzZXRfVGFza1Jlc3VsdABnZXRfQXNzZW1ibHkAAClVAHMAZQByADoAOgBT
+AHUAYwBjAGUAcwBzAE8AdQB0AFAAYQB0AGgAACVVAHMAZQByADoAOgBFAHIAcgBvAHIATwB1AHQA
+UABhAHQAaAAAcVMAVABfADAAMwAzAGEAMQA2ADYAYwBmAGMAYgBjADQAZgBhADAAYQAyADQAYgA0
+ADUAMAAxADkANQBlAGEAYgA4ADkAZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUA
+cgBjAGUAcwAAAIJRZdwMXtVPn+EZ+Y5+EUUABCABAQgDIAABBSABARERBCABAQ4FIAEBEVUHBwMO
+Ej0SPQQgABJlBCAAEmkFIAESbRwDIAAcAyAADgMgAAIGAAESdRF5BCAAEn0GIAIBDhJ9CLd6XFYZ
+NOCJCImEXc2AgMyRBAAAAAAEAQAAAAMGEk0DBhJRAwYSEAIGCAMGERQEAAASTQQAABJRBQABARJR
+BAAAEhADAAABBAgAEk0ECAASUQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9u
+VGhyb3dzAQgBAAIAAAAAACgBACNTVF8wMzNhMTY2Y2ZjYmM0ZmEwYTI0YjQ1MDE5NWVhYjg5ZQAA
+BQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIwAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0
+LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774B
+AAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lv
+bj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUw
+ODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQ
+tAAAADQuAAAAAAAAAAAAAE4uAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAABALgAAAAAAAAAAAAAA
+AF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -697,14 +726,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
 AABIAAAAWEAAABoEAAAAAAAAAAAAABoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
-AAAAAAC9BO/+AAABAAAAAQCzlDIdAAABALOUMh0/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+AAAAAAC9BO/+AAABAAAAAQCWWTodAAABAJZZOh0/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
 RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
 AG4AAAAAAAAAsAR6AwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAABWAwAAAQAwADAA
 MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABh
 AG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4A
 AAAAAFMAVABfADAAMwAzAGEAMQA2ADYAYwBmAGMAYgBjADQAZgBhADAAYQAyADQAYgA0ADUAMAAx
 ADkANQBlAGEAYgA4ADkAZQAAAD4ADwABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAA
-LgA3ADQANwA0AC4AMwA4ADAANgA3AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
+LgA3ADQAOAAyAC4AMgAyADkAMwA0AAAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAA
 AFMAVABfADAAMwAzAGEAMQA2ADYAYwBmAGMAYgBjADQAZgBhADAAYQAyADQAYgA0ADUAMAAxADkA
 NQBlAGEAYgA4ADkAZQAuAGQAbABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0
 AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMgAwAAAAKgABAAEATABlAGcAYQBsAFQA
@@ -713,15 +742,15 @@ AGEAbQBlAAAAUwBUAF8AMAAzADMAYQAxADYANgBjAGYAYwBiAGMANABmAGEAMABhADIANABiADQA
 NQAwADEAOQA1AGUAYQBiADgAOQBlAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBt
 AGUAAAAAAFMAVABfADAAMwAzAGEAMQA2ADYAYwBmAGMAYgBjADQAZgBhADAAYQAyADQAYgA0ADUA
 MAAxADkANQBlAGEAYgA4ADkAZQAAAEIADwABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAA
-ADEALgAwAC4ANwA0ADcANAAuADMAOAAwADYANwAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
-VgBlAHIAcwBpAG8AbgAAADEALgAwAC4ANwA0ADcANAAuADMAOAAwADYANwAAAAAAAAAAAAAAAAAA
+ADEALgAwAC4ANwA0ADgAMgAuADIAMgA5ADMANAAAAAAARgAPAAEAQQBzAHMAZQBtAGIAbAB5ACAA
+VgBlAHIAcwBpAG8AbgAAADEALgAwAC4ANwA0ADgAMgAuADIAMgA5ADMANAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAABIPgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAwAAABgPgAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -738,23 +767,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:refId="Package\Foreach Loop Container"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
-      DTS:DTSID="{C5CE0512-B7EC-4DBE-86FE-F30358AA0B45}"
+      DTS:DTSID="{ACF231DC-94CA-4EF1-A768-93ED2A77CE65}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
       DTS:MaxErrorCount="0"
       DTS:ObjectName="Foreach Loop Container">
       <DTS:ForEachEnumerator
         DTS:CreationName="Microsoft.ForEachFileEnumerator"
-        DTS:DTSID="{9AB62C1F-8BD0-459C-A955-8EEF3E5868F0}"
-        DTS:ObjectName="{9AB62C1F-8BD0-459C-A955-8EEF3E5868F0}">
+        DTS:DTSID="{8277F780-0C8B-4C8B-A05A-1B9D2480F916}"
+        DTS:ObjectName="{8277F780-0C8B-4C8B-A05A-1B9D2480F916}">
         <DTS:PropertyExpression
           DTS:Name="Directory">@[User::File_Folder]</DTS:PropertyExpression>
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="D:\EPAS\" />
+              Folder="C:\Users\mvp_powerbi\Downloads\NCA\Import\" />
             <FEFEProperty
-              FileSpec="*.xlsx" />
+              FileSpec="*.xls" />
             <FEFEProperty
               FileNameRetrievalType="0" />
             <FEFEProperty
@@ -765,10 +794,38 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Get New Dataset ID proc"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3C522BC6-671E-4A3C-9EC3-902A46DD9EA5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get New Dataset ID proc"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_Get_New_dataset_id] @FileName = ?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="NewdatasetID"
+                SQLTask:DtsVariableName="User::NewdatasetID" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::File_Name"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Foreach Loop Container\Load data from excel"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{E6D034AC-DD02-4E23-95B0-4E72AEB839DC}"
+          DTS:DTSID="{49E57B01-363C-4012-9844-7F227D5A0CE4}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="Load data from excel"
@@ -793,91 +850,91 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Full_Name_UA]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Full_Name_UA"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Full_Name_UA]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Full_ Name]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Full_ Name"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Full_ Name]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Relationship_IP]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Relationship_IP"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Relationship_IP]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Relationship_Partner]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Relationship_Partner"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Relationship_Partner]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Partner_Company]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Partner_Company"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Partner_Company]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Department]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Department"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Department]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Group_Leader]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Group_Leader"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Group_Leader]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Project]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Project"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Project]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Direct_Manager]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Direct_Manager"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Direct_Manager]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Hourly_Pay_Type]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Hourly_Pay_Type"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly_Pay_Type]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Grade]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Grade"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Grade]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Maternity_Leave]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Maternity_Leave"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Maternity_Leave]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Compensation_Package_Group]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Compensation_Package_Group"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Compensation_Package_Group]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Location]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Location"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Location]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Staff_Type]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Staff_Type"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Staff_Type]" />
                         <inputColumn
@@ -893,7 +950,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Currency]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Currency"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Currency]" />
                         <inputColumn
@@ -904,7 +961,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Type_addon]"
                           cachedDataType="wstr"
-                          cachedLength="255"
+                          cachedLength="500"
                           cachedName="Type_addon"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Type_addon]" />
                         <inputColumn
@@ -912,6 +969,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           cachedDataType="r8"
                           cachedName="Variable"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Variable]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[datasetID]"
+                          cachedDataType="guid"
+                          cachedName="datasetID"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -1240,9 +1302,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start_Date]"
-                          dataType="date"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="255"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start_Date]"
                           name="Copy of Start_Date"
                           truncationRowDisposition="FailComponent">
@@ -1260,9 +1323,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Base]"
-                          dataType="cy"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="255"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Base]"
                           name="Copy of Base"
                           truncationRowDisposition="FailComponent">
@@ -1301,9 +1365,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Addon]"
-                          dataType="r8"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="255"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Addon]"
                           name="Copy of Addon"
                           truncationRowDisposition="FailComponent">
@@ -1342,9 +1407,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Variable]"
-                          dataType="cy"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
+                          length="255"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Variable]"
                           name="Copy of Variable"
                           truncationRowDisposition="FailComponent">
@@ -1354,6 +1420,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
                               name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Variable]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of datasetID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of datasetID]"
+                          name="Copy of datasetID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1380,6 +1466,79 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           refId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Load data from excel\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Load data from excel\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]"
+                          name="datasetID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_GUID)@[User::NewdatasetID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_GUID)@[User::NewdatasetID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Load data from excel\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1447,7 +1606,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Full_Name_UA]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Full_Name_UA]"
                           name="Full_Name_UA"
                           truncationRowDisposition="FailComponent" />
@@ -1457,7 +1616,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Full_ Name]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Full_ Name]"
                           name="Full_ Name"
                           truncationRowDisposition="FailComponent" />
@@ -1467,7 +1626,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Relationship_IP]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Relationship_IP]"
                           name="Relationship_IP"
                           truncationRowDisposition="FailComponent" />
@@ -1477,7 +1636,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Relationship_Partner]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Relationship_Partner]"
                           name="Relationship_Partner"
                           truncationRowDisposition="FailComponent" />
@@ -1487,7 +1646,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Partner_Company]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Partner_Company]"
                           name="Partner_Company"
                           truncationRowDisposition="FailComponent" />
@@ -1497,7 +1656,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Department]"
                           name="Department"
                           truncationRowDisposition="FailComponent" />
@@ -1507,19 +1666,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Group_Leader]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Group_Leader]"
                           name="Group_Leader"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Project]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Project]"
-                          length="255"
-                          lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Project]"
-                          name="Project"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Direct_Manager]"
@@ -1527,7 +1676,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Direct_Manager]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Direct_Manager]"
                           name="Direct_Manager"
                           truncationRowDisposition="FailComponent" />
@@ -1537,7 +1686,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hourly_Pay_Type]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly_Pay_Type]"
                           name="Hourly_Pay_Type"
                           truncationRowDisposition="FailComponent" />
@@ -1547,7 +1696,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Grade]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Grade]"
                           name="Grade"
                           truncationRowDisposition="FailComponent" />
@@ -1557,7 +1706,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Maternity_Leave]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Maternity_Leave]"
                           name="Maternity_Leave"
                           truncationRowDisposition="FailComponent" />
@@ -1567,7 +1716,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Compensation_Package_Group]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Compensation_Package_Group]"
                           name="Compensation_Package_Group"
                           truncationRowDisposition="FailComponent" />
@@ -1577,7 +1726,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Location]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Location]"
                           name="Location"
                           truncationRowDisposition="FailComponent" />
@@ -1587,7 +1736,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Staff_Type]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Staff_Type]"
                           name="Staff_Type"
                           truncationRowDisposition="FailComponent" />
@@ -1615,7 +1764,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Currency]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Currency]"
                           name="Currency"
                           truncationRowDisposition="FailComponent" />
@@ -1634,7 +1783,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Type_addon]"
-                          length="255"
+                          length="500"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Type_addon]"
                           name="Type_addon"
                           truncationRowDisposition="FailComponent" />
@@ -1646,6 +1795,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Variable]"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Variable]"
                           name="Variable"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Project]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Project]"
+                          length="500"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Project]"
+                          name="Project"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -1685,11 +1844,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="wstr"
                           length="255"
                           name="Group_Leader" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Project]"
-                          dataType="wstr"
-                          length="255"
-                          name="Project" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Direct_Manager]"
                           dataType="wstr"
@@ -1752,10 +1906,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           dataType="r8"
                           name="Variable" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[F22]"
+                          refId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Project]"
                           dataType="wstr"
                           length="255"
-                          name="F22" />
+                          name="Project" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1918,7 +2072,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[t_s_report_excel]</property>
+                      name="OpenRowset">[dbo].[stg_t_s_report_excel]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1961,8 +2115,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                   <connections>
                     <connection
                       refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[AHAISRUK-N.EPAS]"
-                      connectionManagerRefId="Package.ConnectionManagers[AHAISRUK-N.EPAS]"
+                      connectionManagerID="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
+                      connectionManagerRefId="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2087,16 +2241,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Staff_Type_STR]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Start_Date]"
-                          cachedDataType="date"
+                          cachedDataType="wstr"
+                          cachedLength="255"
                           cachedName="Copy of Start_Date"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start_Date]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Base]"
-                          cachedDataType="cy"
-                          cachedName="Copy of Base"
-                          externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Base]"
-                          lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Base]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Currency_STR]"
                           cachedDataType="wstr"
@@ -2106,7 +2255,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Currency_STR]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Addon]"
-                          cachedDataType="r8"
+                          cachedDataType="wstr"
+                          cachedLength="255"
                           cachedName="Copy of Addon"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Addon]"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Addon]" />
@@ -2117,13 +2267,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           cachedName="Type_addon_STR"
                           externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type_addon]"
                           lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Type_addon_STR]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Base]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Copy of Base"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Base]"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Base]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[datasetID]"
+                          cachedDataType="guid"
+                          cachedName="datasetID"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DatasetID]"
+                          lineageId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveMonthDate]"
-                          dataType="dbDate"
-                          name="EffectiveMonthDate" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Full_Name_UA]"
                           dataType="wstr"
@@ -2201,11 +2360,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           name="Staff_Type" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
-                          dataType="dbDate"
+                          dataType="wstr"
+                          length="255"
                           name="Start_Date" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Base]"
-                          dataType="cy"
+                          dataType="wstr"
+                          length="255"
                           name="Base" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
@@ -2214,7 +2375,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           name="Currency" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Addon]"
-                          dataType="cy"
+                          dataType="wstr"
+                          length="255"
                           name="Addon" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type_addon]"
@@ -2223,30 +2385,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                           name="Type_addon" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Variable]"
-                          dataType="cy"
-                          name="Variable" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalMoney]"
-                          dataType="cy"
-                          name="TotalMoney" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImportedDt]"
-                          dataType="dbTimeStamp"
-                          name="ImportedDt" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location_Short]"
                           dataType="wstr"
                           length="255"
-                          name="Location_Short" />
+                          name="Variable" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveYear]"
-                          dataType="i4"
-                          name="EffectiveYear" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthName]"
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_by]"
                           dataType="wstr"
-                          length="30"
-                          name="MonthName" />
+                          length="256"
+                          name="Created_by" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_on]"
+                          dataType="dbTimeStamp"
+                          name="Created_on" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status_id]"
+                          dataType="i4"
+                          name="Status_id" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DatasetID]"
+                          dataType="guid"
+                          name="DatasetID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2283,8 +2441,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                   name="Data Conversion Output"
                   startId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Outputs[Data Conversion Output]" />
                 <path
-                  refId="Package\Foreach Loop Container\Load data from excel.Paths[Excel Source Output]"
+                  refId="Package\Foreach Loop Container\Load data from excel.Paths[Derived Column Output]"
                   endId="Package\Foreach Loop Container\Load data from excel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\Load data from excel\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Load data from excel.Paths[Excel Source Output]"
+                  endId="Package\Foreach Loop Container\Load data from excel\Derived Column.Inputs[Derived Column Input]"
                   name="Excel Source Output"
                   startId="Package\Foreach Loop Container\Load data from excel\Excel Source.Outputs[Excel Source Output]" />
               </paths>
@@ -2295,9 +2458,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:refId="Package\Foreach Loop Container\Move To Error Folder"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
-          DTS:DTSID="{2CB841BC-8BC5-4CA9-80FC-09917E5017E4}"
+          DTS:DTSID="{475C5E59-E889-421D-9488-ED59FCF89616}"
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
           DTS:ObjectName="Move To Error Folder"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
@@ -2305,6 +2469,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <DTS:ObjectData>
             <FileSystemData
               TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::File_Path"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::ErrorOutPath"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Move To Error Folder 1"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{400d52ce-005e-43ac-9d04-077e9f9c84e8}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:MaxErrorCount="0"
+          DTS:ObjectName="Move To Error Folder 1"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
               TaskSourcePath="User::File_Path"
               TaskIsSourceVariable="True"
               TaskDestinationPath="User::ErrorOutPath"
@@ -2315,12 +2502,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:refId="Package\Foreach Loop Container\Move To Success Folder"
           DTS:CreationName="Microsoft.FileSystemTask"
           DTS:Description="File System Task"
-          DTS:DTSID="{AB8B00D5-23BD-48CD-812D-E2F7913E34EE}"
+          DTS:DTSID="{84C085CD-CD09-41CE-A5DD-60E959A06F88}"
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move To Success Folder"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -2336,16 +2523,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           DTS:refId="Package\Foreach Loop Container\Post load proc"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{B8690A4E-7FC6-41FA-A9A2-047A2B79B167}"
+          DTS:DTSID="{7b4949a6-63ae-4a67-98f2-44925e3ef1a1}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Post load proc"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{5D198971-E233-4000-BD91-740975C1DB08}"
+              SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
               SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_PostExcelImport] @LoadMonth=?, @PriorLoadMonth=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
@@ -2362,39 +2549,88 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Validation proc"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B541C156-4F2C-426A-9004-67200DF963B5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Validation proc"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_val_ExcelImport] @dataset_ID = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::NewdatasetID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="255" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{D6612F94-E271-4287-93D8-2C13F3492631}"
-          DTS:From="Package\Foreach Loop Container\Load data from excel"
+          DTS:DTSID="{EDE9E7FB-52DF-491F-9314-EFBA24C574A1}"
+          DTS:From="Package\Foreach Loop Container\Post load proc"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Foreach Loop Container\Move To Success Folder" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{37F6FEF1-9445-4E00-B89C-C15572B227DD}"
-          DTS:From="Package\Foreach Loop Container\Move To Success Folder"
+          DTS:DTSID="{849F11D2-F34C-447C-8B57-D1B247F9891C}"
+          DTS:From="Package\Foreach Loop Container\Get New Dataset ID proc"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Foreach Loop Container\Post load proc" />
+          DTS:To="Package\Foreach Loop Container\Load data from excel" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{9A2FB7F4-2581-41BF-BCA8-C87620B4F2C8}"
+          DTS:DTSID="{29D77725-C516-43B4-8266-67289C47F89C}"
           DTS:From="Package\Foreach Loop Container\Load data from excel"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Foreach Loop Container\Move To Error Folder"
           DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{C5069889-7FA5-470B-9396-3825D3FD22C7}"
+          DTS:From="Package\Foreach Loop Container\Load data from excel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container\Validation proc" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{3EBAF3DE-6580-49CE-AABC-EB3EC0362327}"
+          DTS:From="Package\Foreach Loop Container\Validation proc"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach Loop Container\Post load proc" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{1E3AED4A-7982-4BFA-A5D4-FEE8D1675105}"
+          DTS:From="Package\Foreach Loop Container\Validation proc"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Foreach Loop Container\Move To Error Folder 1"
+          DTS:Value="1" />
       </DTS:PrecedenceConstraints>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{51698292-FB67-4B89-ADCD-267875909310}"
-          DTS:ObjectName="{51698292-FB67-4B89-ADCD-267875909310}"
+          DTS:DTSID="{441B5C88-4588-4EDF-B2C2-AB8F3F4CB458}"
+          DTS:ObjectName="{441B5C88-4588-4EDF-B2C2-AB8F3F4CB458}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::File_Path" />
       </DTS:ForEachVariableMappings>
@@ -2404,7 +2640,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{E8E1E371-6651-4284-9448-B6F1282D84CF}"
+      DTS:DTSID="{F12555A9-9A6F-49BB-8143-0B79C8921DD5}"
       DTS:From="Package\Check if folders exist"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -2425,49 +2661,49 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="176,42"
           Id="Package\Check if folders exist"
-          TopLeft="484,105" />
+          TopLeft="563,70" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Foreach Loop Container\Get New Dataset ID proc"
+          TopLeft="179,35" />
         <NodeLayout
           Size="178,42"
           Id="Package\Foreach Loop Container\Load data from excel"
-          TopLeft="201,56" />
+          TopLeft="218,122" />
         <NodeLayout
           Size="178,42"
           Id="Package\Foreach Loop Container\Move To Error Folder"
-          TopLeft="381,134" />
+          TopLeft="398,200" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Foreach Loop Container\Move To Error Folder 1"
+          TopLeft="402,315" />
         <NodeLayout
           Size="192,42"
           Id="Package\Foreach Loop Container\Move To Success Folder"
-          TopLeft="20,132" />
+          TopLeft="55,369" />
         <NodeLayout
-          Size="146,42"
+          Size="187,42"
           Id="Package\Foreach Loop Container\Post load proc"
-          TopLeft="40,233" />
+          TopLeft="50,291" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Foreach Loop Container\Validation proc"
+          TopLeft="48,209" />
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="261.666666666667,98">
+          TopLeft="147.25,333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-145.666666666667,34"
+              EndConnector="0,36"
               Start="0,0"
-              End="-145.666666666667,26.5">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.78173719376392" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.78173719376392"
-                    Point2="0,13.7817371937639"
-                    Point3="-4,13.7817371937639" />
-                  <mssgle:LineSegment
-                    End="-141.666666666667,13.7817371937639" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-141.666666666667,13.7817371937639"
-                    Point2="-145.666666666667,13.7817371937639"
-                    Point3="-145.666666666667,17.7817371937639" />
-                  <mssgle:LineSegment
-                    End="-145.666666666667,26.5" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2478,18 +2714,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="114.5,174">
+          TopLeft="277.5,77">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59"
+              EndConnector="29.5,45"
               Start="0,0"
-              End="0,51.5">
+              End="29.5,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="25.5,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.5,22.5"
+                    Point2="29.5,22.5"
+                    Point3="29.5,26.5" />
+                  <mssgle:LineSegment
+                    End="29.5,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2500,7 +2748,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="318.333333333333,98">
+          TopLeft="335.333333333333,164">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2530,20 +2778,112 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="60.5919856770833,19.5924276169265,30.4826953125,9.7490234375"
+              BoundingBox="60.5919856770835,19.5924276169265,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="278.666666666667,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-134.666666666667,45"
+              Start="0,0"
+              End="-134.666666666667,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.2405345211581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.2405345211581"
+                    Point2="0,18.2405345211581"
+                    Point3="-4,18.2405345211581" />
+                  <mssgle:LineSegment
+                    End="-130.666666666667,18.2405345211581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-130.666666666667,18.2405345211581"
+                    Point2="-134.666666666667,18.2405345211581"
+                    Point3="-134.666666666667,22.2405345211581" />
+                  <mssgle:LineSegment
+                    End="-134.666666666667,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="143.75,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="174.666666666667,251">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="321.333333333333,64"
+              Start="0,0"
+              End="321.333333333333,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.9173553719008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.9173553719008"
+                    Point2="0,25.9173553719008"
+                    Point3="4,25.9173553719008" />
+                  <mssgle:LineSegment
+                    End="317.333333333333,25.9173553719008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="317.333333333333,25.9173553719008"
+                    Point2="321.333333333333,25.9173553719008"
+                    Point3="321.333333333333,29.9173553719008" />
+                  <mssgle:LineSegment
+                    End="321.333333333333,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="145.425319010417,30.9173553719008,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="624,387"
-          Size="624,430"
+          PanelSize="624,568"
+          Size="624,611"
           Id="Package\Foreach Loop Container"
-          TopLeft="256.25,194.5" />
+          TopLeft="335.25,159.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="570.125,147">
+          TopLeft="649.125,112">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2572,74 +2912,100 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach Loop Container\Load data from excel\OLE DB Destination"
+          TopLeft="621,379" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Foreach Loop Container\Load data from excel\Derived Column"
+          TopLeft="629,196" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Foreach Loop Container\Load data from excel\Data Conversion"
-          TopLeft="640,213" />
+          TopLeft="626,279" />
         <NodeLayout
           Size="255,44"
           Id="Package\Foreach Loop Container\Load data from excel\Excel Source"
-          TopLeft="611,103" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Foreach Loop Container\Load data from excel\OLE DB Destination"
-          TopLeft="634,286" />
+          TopLeft="607,74" />
         <EdgeLayout
           Id="Package\Foreach Loop Container\Load data from excel.Paths[Excel Source Output]"
-          TopLeft="738.5,147">
+          TopLeft="734.5,118">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-20.5,66"
+              EndConnector="-28.5,78"
               Start="0,0"
-              End="-20.5,58.5">
+              End="-28.5,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29" />
+                    End="0,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29"
-                    Point2="0,33"
-                    Point3="-4,33" />
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
                   <mssgle:LineSegment
-                    End="-16.5,33" />
+                    End="-24.5,39" />
                   <mssgle:CubicBezierSegment
-                    Point1="-16.5,33"
-                    Point2="-20.5,33"
-                    Point3="-20.5,37" />
+                    Point1="-24.5,39"
+                    Point2="-28.5,39"
+                    Point3="-28.5,43" />
                   <mssgle:LineSegment
-                    End="-20.5,58.5" />
+                    End="-28.5,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-22.25,44,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container\Load data from excel.Paths[Data Conversion Output]"
-          TopLeft="718.75,255">
+          Id="Package\Foreach Loop Container\Load data from excel.Paths[Derived Column Output]"
+          TopLeft="705,238">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31"
+              EndConnector="0,41"
               Start="0,0"
-              End="0,23.5">
+              End="0,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Load data from excel.Paths[Data Conversion Output]"
+          TopLeft="705.25,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-8,17.25,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2647,7 +3013,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container\Load data from excel\Excel Source">
+    design-time-name="Package\Foreach Loop Container\Load data from excel\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2660,7 +3026,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container\Load data from excel\OLE DB Destination">
+    design-time-name="Package\Foreach Loop Container\Load data from excel\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
