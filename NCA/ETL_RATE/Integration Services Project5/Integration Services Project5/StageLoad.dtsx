@@ -1,0 +1,1357 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/15/2020 9:23:53 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AHAISRUK-N"
+  DTS:CreatorName="INFOPULSE\Anton.Haistruk"
+  DTS:DTSID="{5AB40313-C4AD-43AC-A038-07142D95AB17}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LocaleID="1058"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="127"
+  DTS:VersionGUID="{7B364622-EFBA-4D8D-B099-AC2FF69174D1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+      DTS:ObjectName="172.27.145.41.EPAS_DEV.mvp_powerbi">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.27.145.41;User ID=mvp_powerbi;Initial Catalog=EPAS_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAm7RUvmi3cEeamXXMRB4ttQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADyEnsQNbXyFzU7nuv7wgKMtPHVSB1uGcZL3PZ9CoWdswAAAAAOgAAAAAIAACAAAACKFKKV6jvhN4BsuVlDamAXXJnOI2MHWtvx9zfsQAbGsiAAAAAaSr5Ji4yyl74ZI2VZbKYgxFGMq0eBDozgGMh424mIdkAAAADsevsUkrjIDf2uKbxAxy4yIS59NQdRwlwR8T44/7ytay49WBnCdnSHq65bhcLn6u6xn2oOlRj1bRVSrA7cKohM</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{EBD6CD8B-AEAC-44CF-A739-FC422A67E422}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ExcelFilePath">@[User::File_Path]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Cosya007\Desktop\Cosya007\Cosya007\NCA\Import\RateLoad\rates.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{BFD893E0-3A29-4853-B554-F49CA69D5F14}"
+      DTS:ObjectName="Input_File_Path"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">D:\EPAS\02.2019.xlsx</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E15FCC05-C468-4645-8995-D9B0D9A80D73}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::File_Folder]  + &quot;Error&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorOutPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Cosya007\Desktop\Cosya007\Cosya007\NCA\Import\RateLoad\Error</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D787EE74-869E-4037-B162-D8BF1E74ADC0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="REPLACE( @[User::File_Path] , @[User::File_Name] ,&quot;&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="File_Folder">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Cosya007\Desktop\Cosya007\Cosya007\NCA\Import\RateLoad\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8900BEEF-6D6F-4940-800E-546C00A3D7C4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="RIGHT( @[User::File_Path] ,10)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="File_Name">
+      <DTS:VariableValue
+        DTS:DataType="8">rates.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D3845781-5327-49DB-BAE5-FBE39A7C82B6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="File_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Cosya007\Desktop\Cosya007\Cosya007\NCA\Import\RateLoad\rates.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7E3B91D7-AD86-4616-BD9B-49EF8054B6E3}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NewdatasetID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{494B1D76-AF15-420A-9BB7-14C05FBA7D21}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::File_Folder]  + &quot;Success&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SuccessOutPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\Cosya007\Desktop\Cosya007\Cosya007\NCA\Import\RateLoad\Success</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get New Dataset ID proc"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5f57f23a-8238-4244-b978-c0215091a686}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get New Dataset ID proc"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_Get_New_dataset_id] @FileName = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="NewdatasetID"
+            SQLTask:DtsVariableName="User::NewdatasetID" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::File_Name"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load data from excel"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3e01f6b4-a087-43ad-a1e9-9585a1aee03a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load data from excel"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load data from excel\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[datasetID]"
+                      cachedDataType="guid"
+                      cachedName="datasetID"
+                      lineageId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Role]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Role"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Role short name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Role short name"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role short name]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Hourly Rate FY 19-20]"
+                      cachedDataType="cy"
+                      cachedName="Hourly Rate FY 19-20"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly Rate FY 19-20]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[Start date]"
+                      cachedDataType="date"
+                      cachedName="Start date"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Start date]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input].Columns[End date]"
+                      cachedDataType="date"
+                      cachedName="End date"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[End date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Role]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Role]"
+                      name="Копия Role"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Role short name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Role short name]"
+                      name="Копия Role short name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role short name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Hourly Rate FY 19-20]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Hourly Rate FY 19-20]"
+                      name="Копия Hourly Rate FY 19-20"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly Rate FY 19-20]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Start date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия Start date]"
+                      name="Копия Start date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Start date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия End date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия End date]"
+                      name="Копия End date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[End date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия datasetID]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output].Columns[Копия datasetID]"
+                      name="Копия datasetID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает входной столбец, служащий источником данных для преобразования."
+                          name="SourceInputColumnLineageID">#{Package\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Указывает, используются ли в столбце более производительные, не зависящие от локалей процедуры синтаксического анализа."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data from excel\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load data from excel\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load data from excel\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]"
+                      name="datasetID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_GUID)@[User::NewdatasetID]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_GUID)@[User::NewdatasetID]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data from excel\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load data from excel\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data from excel\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data from excel\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Role]"
+                      length="255"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role]"
+                      name="Role"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role short name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Role short name]"
+                      length="255"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role short name]"
+                      name="Role short name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly Rate FY 19-20]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hourly Rate FY 19-20]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly Rate FY 19-20]"
+                      name="Hourly Rate FY 19-20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Start date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Start date]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Start date]"
+                      name="Start date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[End date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[End date]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[End date]"
+                      name="End date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Role]"
+                      dataType="wstr"
+                      length="255"
+                      name="Role" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Role short name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Role short name" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hourly Rate FY 19-20]"
+                      dataType="cy"
+                      name="Hourly Rate FY 19-20" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[Start date]"
+                      dataType="date"
+                      name="Start date" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].ExternalColumns[End date]"
+                      dataType="date"
+                      name="End date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Role]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Role]"
+                      name="Role" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Role short name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Role short name]"
+                      name="Role short name" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Hourly Rate FY 19-20]"
+                      dataType="cy"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Hourly Rate FY 19-20]"
+                      name="Hourly Rate FY 19-20" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Start date]"
+                      dataType="date"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[Start date]"
+                      name="Start date" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[End date]"
+                      dataType="date"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[End date]"
+                      name="End date" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data from excel\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_t_rates]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data from excel\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.27.145.41.EPAS_DEV.mvp_powerbi]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[datasetID]"
+                      cachedDataType="guid"
+                      cachedName="datasetID"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DatasetID]"
+                      lineageId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output].Columns[datasetID]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Role]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Role"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Role]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Role short name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Role short name"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short_Role]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Role short name]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hourly Rate FY 19-20]"
+                      cachedDataType="cy"
+                      cachedName="Hourly Rate FY 19-20"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hr_Rate]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Hourly Rate FY 19-20]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Start date]"
+                      cachedDataType="date"
+                      cachedName="Start date"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_date]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[Start date]" />
+                    <inputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[End date]"
+                      cachedDataType="date"
+                      cachedName="End date"
+                      externalMetadataColumnId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_date]"
+                      lineageId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output].Columns[End date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_by]"
+                      dataType="wstr"
+                      length="256"
+                      name="Created_by" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created_on]"
+                      dataType="dbTimeStamp"
+                      name="Created_on" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status_id]"
+                      dataType="i4"
+                      name="Status_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DatasetID]"
+                      dataType="guid"
+                      name="DatasetID" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Role]"
+                      dataType="wstr"
+                      length="255"
+                      name="Role" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short_Role]"
+                      dataType="wstr"
+                      length="255"
+                      name="Short_Role" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hr_Rate]"
+                      dataType="wstr"
+                      length="255"
+                      name="Hr_Rate" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_date]"
+                      dataType="wstr"
+                      length="255"
+                      name="End_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data from excel\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from excel\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load data from excel.Paths[Data Conversion Output]"
+              endId="Package\Load data from excel\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load data from excel\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load data from excel.Paths[Derived Column Output]"
+              endId="Package\Load data from excel\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Load data from excel\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load data from excel.Paths[Excel Source Output]"
+              endId="Package\Load data from excel\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Load data from excel\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move To Error Folder"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{09c70770-2366-4db6-bc2d-b1bf1b96289b}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="0"
+      DTS:ObjectName="Move To Error Folder"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="MoveFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::File_Path"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::ErrorOutPath"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move To Error Folder 1"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{4d3dd5af-2f26-45ce-a4e5-595bd1596b95}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="0"
+      DTS:ObjectName="Move To Error Folder 1"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="MoveFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::File_Path"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::ErrorOutPath"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move To Success Folder"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{575dd268-827c-4afb-b490-5db512ee0bc4}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Move To Success Folder"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="MoveFile"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::File_Path"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::SuccessOutPath"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Post load proc"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3533f4ca-3100-4f9f-b56f-453f469485bc}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Post load proc"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_PostExcelImport] @LoadMonth=?, @PriorLoadMonth=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::DATE"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="10" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::DATE"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="10" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Validation proc"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9e7baf53-c505-4c1d-914c-2dbac6870a14}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Validation proc"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{66A0F5FA-36F9-4B91-947D-5B72A8DC75EA}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[usp_val_rateImport] @dataset_ID = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::NewdatasetID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{47023c11-dc2a-4bb6-9abb-71e44c2a7428}"
+      DTS:From="Package\Post load proc"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Move To Success Folder" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4438170b-9c68-4a49-8f7c-a6df7a6005e7}"
+      DTS:From="Package\Get New Dataset ID proc"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load data from excel" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{77a1a02e-fc5f-4339-a0e2-9e7ce688e764}"
+      DTS:From="Package\Load data from excel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Move To Error Folder"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{695df129-f855-43dc-ab2c-3a3d72f9626b}"
+      DTS:From="Package\Load data from excel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Validation proc" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{921a9c5b-c06d-40bb-b86e-5a8dd81d720b}"
+      DTS:From="Package\Validation proc"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Post load proc" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{4b443878-005c-4903-8ae4-70913a158e3c}"
+      DTS:From="Package\Validation proc"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Move To Error Folder 1"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Get New Dataset ID proc"
+          TopLeft="538.25,105.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Load data from excel"
+          TopLeft="577.25,192.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Move To Error Folder"
+          TopLeft="757.25,270.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Move To Error Folder 1"
+          TopLeft="770.25,328.5" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Move To Success Folder"
+          TopLeft="414.25,439.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Post load proc"
+          TopLeft="409.25,361.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Validation proc"
+          TopLeft="407.25,279.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="483.75,403.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.5,36"
+              Start="0,0"
+              End="26.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="22.5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,18"
+                    Point2="26.5,18"
+                    Point3="26.5,22" />
+                  <mssgle:LineSegment
+                    End="26.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="636.75,147.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28,45"
+              Start="0,0"
+              End="28,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="24,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24,22.5"
+                    Point2="28,22.5"
+                    Point3="28,26.5" />
+                  <mssgle:LineSegment
+                    End="28,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="692.716666666667,234.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="153.333333333333,36.4"
+              Start="0,0"
+              End="153.333333333333,28.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.7576470588235" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.7576470588235"
+                    Point2="0,14.7576470588235"
+                    Point3="4,14.7576470588235" />
+                  <mssgle:LineSegment
+                    End="149.333333333333,14.7576470588235" />
+                  <mssgle:CubicBezierSegment
+                    Point1="149.333333333333,14.7576470588235"
+                    Point2="153.333333333333,14.7576470588235"
+                    Point3="153.333333333333,18.7576470588235" />
+                  <mssgle:LineSegment
+                    End="153.333333333333,28.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="64.8724479166665,19.7576470588235,23.5884375,10.1396484375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="636.983333333333,234.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.133333333333,45.4"
+              Start="0,0"
+              End="-156.133333333333,37.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.4065158371041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.4065158371041"
+                    Point2="0,18.4065158371041"
+                    Point3="-4,18.4065158371041" />
+                  <mssgle:LineSegment
+                    End="-152.133333333333,18.4065158371041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.133333333333,18.4065158371041"
+                    Point2="-156.133333333333,18.4065158371041"
+                    Point3="-156.133333333333,22.4065158371041" />
+                  <mssgle:LineSegment
+                    End="-156.133333333333,37.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="482.25,321.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="554.45,300.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215.8,49"
+              Start="0,0"
+              End="208.3,49">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.9,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.9,0"
+                    Point2="107.9,0"
+                    Point3="107.9,4" />
+                  <mssgle:LineSegment
+                    End="107.9,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.9,45"
+                    Point2="107.9,49"
+                    Point3="111.9,49" />
+                  <mssgle:LineSegment
+                    End="208.3,49" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="96.1057812500001,-16.1396484375,23.5884375,10.1396484375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load data from excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load data from excel\Derived Column"
+          TopLeft="629,196" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load data from excel\Data Conversion"
+          TopLeft="626,279" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load data from excel\OLE DB Destination"
+          TopLeft="621,379" />
+        <NodeLayout
+          Size="255,44"
+          Id="Package\Load data from excel\Excel Source"
+          TopLeft="581,100" />
+        <EdgeLayout
+          Id="Package\Load data from excel.Paths[Excel Source Output]"
+          TopLeft="707.25,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data from excel.Paths[Derived Column Output]"
+          TopLeft="705,238">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data from excel.Paths[Data Conversion Output]"
+          TopLeft="705.25,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data from excel\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data from excel\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
