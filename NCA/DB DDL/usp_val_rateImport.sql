@@ -15,7 +15,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 
-CREATE PROCEDURE [dbo].[usp_val_rateImport]
+ALTER PROCEDURE [dbo].[usp_val_rateImport]
 
 
 	@dataset_ID uniqueidentifier
@@ -185,7 +185,7 @@ BEGIN
 	Select 
 		Short_Role 
 	from 
-		t_rate_load_errors
+		[dbo].[t_rates_load_errors ]
 	where 
 		DatasetID = @dataset_ID;
 	

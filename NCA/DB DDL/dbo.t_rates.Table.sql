@@ -26,6 +26,9 @@ CREATE TABLE [dbo].[t_rates](
 ) ON [PRIMARY]
 GO
 
+ALTER TABLE [dbo].[t_rates] ADD  DEFAULT (newid()) FOR [ID]
+GO
+
 ALTER TABLE [dbo].[t_rates] ADD  DEFAULT (CONVERT([nvarchar],user_name())) FOR [Created_by]
 GO
 
