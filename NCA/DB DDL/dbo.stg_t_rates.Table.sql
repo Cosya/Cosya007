@@ -1,4 +1,4 @@
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
 /****** Object:  Table [dbo].[stg_t_s_report_excel]    Script Date: 10.08.2020 16:18:26 ******/

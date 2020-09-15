@@ -1,4 +1,4 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 
 /****** Object:  Table [Import].[ImportResult]    Script Date: 17.07.2020 14:25:06 ******/

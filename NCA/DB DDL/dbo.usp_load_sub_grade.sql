@@ -1,4 +1,4 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 /****** Object:  StoredProcedure [dbo].[usp_s_excell_report_normalization]    Script Date: 17.07.2020 15:18:52 ******/
 

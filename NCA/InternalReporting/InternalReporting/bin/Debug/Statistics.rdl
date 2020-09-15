@@ -3,10 +3,10 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="EPAS">
+    <DataSource Name="EPAS_DEV">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=EPAS</ConnectString>
+        <ConnectString>Data Source=localhost;Initial Catalog=EPAS_DEV</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -16,7 +16,7 @@
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@Month1">
             <Value>=Parameters!Month1.Value</Value>
@@ -56,13 +56,13 @@
 	re.Full_Name,
 	re.Location_Short,
 	TotalMoney as Compensation
-	  FROM [EPAS].[dbo].[t_s_report_excel] re
-	  left join [EPAS].[dbo].[t_short_grades] sg on re.Grade = sg.Long_Grade
-	  left Join [EPAS].[dbo].[t_manager_map] manager_map
+	  FROM [dbo].[t_s_report_excel] re
+	  left join [dbo].[t_short_grades] sg on re.Grade = sg.Long_Grade
+	  left Join [dbo].[t_manager_map] manager_map
 		on re.EffectiveMonthDate = manager_map.EffectiveMonthDate
 		and re.Full_Name =  manager_map.Full_Name
 		and manager_map.Direct_Manager in (@Direct_Manager )
-	left Join [EPAS].[dbo].[t_Project_map] project_map
+	left Join [dbo].[t_Project_map] project_map
 		on re.EffectiveMonthDate = project_map.EffectiveMonthDate
 		and re.Full_Name =  project_map.Full_Name
 		and project_map.Project in (@Project)
@@ -120,8 +120,8 @@
     </DataSet>
     <DataSet Name="Locations">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
-        <CommandText>select distinct Location_Short as Location from [EPAS].[dbo].[t_s_report_excel] order by 1</CommandText>
+        <DataSourceName>EPAS_DEV</DataSourceName>
+        <CommandText>select distinct Location_Short as Location from [dbo].[t_s_report_excel] order by 1</CommandText>
       </Query>
       <Fields>
         <Field Name="Location">
@@ -132,10 +132,10 @@
     </DataSet>
     <DataSet Name="Grades">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT 
       distinct [Grade]
-  FROM [EPAS].[dbo].[t_short_grades]
+  FROM  [dbo].[t_short_grades]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -147,10 +147,10 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="Assignments">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT 
       distinct [Short_Grade]
-  FROM [EPAS].[dbo].[t_short_grades]
+  FROM [dbo].[t_short_grades]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -162,10 +162,10 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="Specializations">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT 
       distinct [Specialization]
-  FROM [EPAS].[dbo].[t_short_grades]
+  FROM  [dbo].[t_short_grades]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -177,10 +177,10 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="AssignmentTypes">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT 
       distinct [Grade_Type]
-  FROM [EPAS].[dbo].[t_short_grades]
+  FROM [dbo].[t_short_grades]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -192,8 +192,8 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="GLs">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
-        <CommandText>select distinct Group_Leader from [EPAS].[dbo].[t_s_report_excel]
+        <DataSourceName>EPAS_DEV</DataSourceName>
+        <CommandText>select distinct Group_Leader from [dbo].[t_s_report_excel]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -205,8 +205,8 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="Months">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
-        <CommandText>select distinct EffectiveMonthDate,  DATENAME(MONTH,EffectiveMonthDate) + ' '+ DATENAME(yy,EffectiveMonthDate) as MonthName  from [EPAS].[dbo].[t_s_report_excel] order by 1 desc</CommandText>
+        <DataSourceName>EPAS_DEV</DataSourceName>
+        <CommandText>select distinct EffectiveMonthDate,  DATENAME(MONTH,EffectiveMonthDate) + ' '+ DATENAME(yy,EffectiveMonthDate) as MonthName  from [dbo].[t_s_report_excel] order by 1 desc</CommandText>
       </Query>
       <Fields>
         <Field Name="EffectiveMonthDate">
@@ -221,9 +221,9 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="Project">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT distinct[Project]
-  FROM [EPAS].[dbo].[t_project_map]
+  FROM [dbo].[t_project_map]
 order by 1</CommandText>
       </Query>
       <Fields>
@@ -235,9 +235,9 @@ order by 1</CommandText>
     </DataSet>
     <DataSet Name="Direct_Manager">
       <Query>
-        <DataSourceName>EPAS</DataSourceName>
+        <DataSourceName>EPAS_DEV</DataSourceName>
         <CommandText>SELECT DISTINCT [Direct_Manager]
-  FROM [EPAS].[dbo].[t_manager_map]</CommandText>
+  FROM  [dbo].[t_manager_map]</CommandText>
       </Query>
       <Fields>
         <Field Name="Direct_Manager">

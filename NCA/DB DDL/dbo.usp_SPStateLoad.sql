@@ -1,4 +1,4 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 
 /****** Object:  StoredProcedure [Import].[StateLoad]    Script Date: 16.07.2020 16:34:01 ******/

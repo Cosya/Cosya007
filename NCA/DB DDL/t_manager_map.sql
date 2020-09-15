@@ -1,4 +1,4 @@
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
 /****** Object:  Table [dbo].[t_manager_map]    Script Date: 07.07.2020 12:26:33 ******/

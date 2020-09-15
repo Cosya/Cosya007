@@ -1,4 +1,4 @@
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
 /****** Object:  Table [dbo].[t_rates_load_errors ]    Script Date: 11.08.2020 11:40:56 ******/

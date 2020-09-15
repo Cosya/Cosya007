@@ -1,4 +1,4 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 /****** Object:  StoredProcedure [Import].[PersonLoad]    Script Date: 16.07.2020 18:37:38 ******/
 SET ANSI_NULLS ON

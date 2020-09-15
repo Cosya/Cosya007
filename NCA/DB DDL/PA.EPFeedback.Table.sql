@@ -1,4 +1,4 @@
-USE [EPAS_DEV3]
+USE [EPAS]
 GO
 
 /****** Object:  Table [PA].[EPFeedback]    Script Date: 17.07.2020 13:21:03 ******/

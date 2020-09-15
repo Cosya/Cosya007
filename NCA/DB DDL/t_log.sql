@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
 /****** Object:  Table [dbo].[t_log]    Script Date: 07.07.2020 12:26:07 ******/

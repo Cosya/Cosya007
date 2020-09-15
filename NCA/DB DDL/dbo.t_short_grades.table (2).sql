@@ -1,4 +1,4 @@
-USE [EPAS_DEV]
+USE [EPAS]
 GO
 
 /****** Object:  Table [dbo].[t_short_grades]    Script Date: 05.08.2020 12:05:08 ******/
